@@ -1,5 +1,4 @@
 name: Publish
-
 on:
     push:
         branches:
@@ -10,7 +9,7 @@ jobs:
         name: deploy
         runs-on: ubuntu-latest
         steps:
-          - name: Get code
+          - name: Get latest code
             uses: actions/checkout@v4
 
           - name: Deploy to FTP
