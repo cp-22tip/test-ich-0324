@@ -4,26 +4,27 @@ on:
     push:
         branches:
             - main
-    workflow_dispatch:
-
-
-    
+    workflow_dispatch: 
 jobs: 
     deploy:
+        name: deploy
         runs-on: ubuntu-latest
         steps:
-          - name: Get latest code
+          - name: Get code
             uses: actions/checkout@v4
 
           - name: Deploy to FTP
             uses: SamKirkLand/FTP-Deploy-Action@v4.3.6
             with:
-              server: ${{ secrets.FTP_server}}
-              username: ${{ secrets.FTP_username}}
-              password: ${{ secrets.FTP_password }}
+              server: ${{ secrets.FTP_SERVER}}
+              username: ${{ secrets.FTP_USERNAME}}
+              password: ${{ secrets.FTP_PASSWORD }}
+              port: ${{ secrets.FTP_PORT}}
+              protocol: ${{ secrets.FTP_PROTOCOL}}
               server-dir:  /examen119/
               exclude: | 
                 **/.git*
+                **/.git*/**
                 **/.github/**
 
 
